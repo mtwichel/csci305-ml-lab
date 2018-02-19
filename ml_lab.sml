@@ -2,13 +2,15 @@
 *
 * CSCI 305 - ML Programming Lab
 *
-* <firstname> <lastname>
-* <email-address>
+* Marcus Twichel
+* marc.twichy@gmail.com
 *
 ***************************************************************)
 
 (* Define your data type and functions here *)
-
+fun f [] = [] (* a *)
+  | f (x::xs) = (x + 1) :: (f xs); (* b *)
+  
 (* Simple function to stringify the contents of a Set of characters *)
 fun stringifyCharSet Empty = ""
   | stringifyCharSet (Set(y, ys)) = Char.toString(y) ^ " " ^ stringifyCharSet(ys);

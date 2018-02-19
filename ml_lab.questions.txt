@@ -3,13 +3,13 @@ CSCI 305
 Spring 2018
 Lab Questions
 =======================
-1.
+1. [4,2,5,2,6,10]
 
-2.
+2. It adds 1 to each item in the int list.
 
-3.
+3. It returns an empty list if passed an empty list; it is the base case.
 
-4.
+4. It returns 
 
 5.
 
