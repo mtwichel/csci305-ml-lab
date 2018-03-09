@@ -1,4 +1,4 @@
-<firstname> <lastname>
+Marcus Twichel
 CSCI 305
 Spring 2018
 Lab Questions
@@ -9,26 +9,26 @@ Lab Questions
 
 3. It returns an empty list if passed an empty list; it is the base case.
 
-4. It returns 
+4. It receives list with head cons on top; returns: adds one to head cons recursive call with the rest of list
 
-5.
+5. False
 
-6.
+6. Tail recursion because it first checks the current item and then recurses if need-be (due to short circuit logic)
 
-7.
+7. { best times, it was the worst of times }
 
-8.
+8. Tail recursion is beneficial because it does the computation before the recursive call. In this way it works much like a loop, in that it does it's work, and then sends for another call.
 
-9.
+9. { green eggs and ham }
 
-10.
+10. { and macaroni }
 
-11.
+11. I love the strictness of types that ML imposes, and it overall feel. I also like that it's very orthogonal.
 
-12.
+12. I disliked debugging code in ML. I found the errors rarely useful and without an easy print statement I found it hard to find out the state of the program at different points.
 
-13.
+13. I overall did enjoy the lab. I like this language and it was fun implementing something bigger in it. I didn't like that pretty much all of the work couldn't be accomplished until the 4th lecture though.
 
-14.
+14. I spent about 3 hours on the lab.
 
-15.
+15. I hope I will use a functional language again. I think I'm going to look into Haskell, but the company I intern for uses the .NET framework so maybe F#.

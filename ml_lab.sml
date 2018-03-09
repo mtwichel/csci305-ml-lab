@@ -7,10 +7,41 @@
 *
 ***************************************************************)
 
+
 (* Define your data type and functions here *)
-fun f [] = [] (* a *)
-  | f (x::xs) = (x + 1) :: (f xs); (* b *)
-  
+fun f [] = [] (* returns an empty list if passed an empty list; it is the base case. *)
+  | f (x::xs) = (x + 1) :: (f xs); (* receives list with head cons on top; returns: adds one to head cons recursive call with the rest of list *)
+
+datatype 'element set = Empty | Set of ('element * 'element set);
+
+fun isMember e Empty = false
+|   isMember e (Set(head,tail)) =
+      head=e
+      orelse isMember e tail;
+
+fun list2Set [] = Empty
+|   list2Set (x::xs) =
+      let
+        val current = list2Set(xs)
+      in
+        if isMember x current then current
+        else Set(x, current)
+      end;
+
+fun union Empty Empty = Empty  (*If two Empty sets, return empty*)
+|   union Empty set = set      (*If one Empty set,*)
+|   union set Empty = set      (*return the full set*)
+|   union (Set(hd1, tl1)) set2 =
+      if isMember hd1 set2 then union tl1 set2    (*If head of first set in in second set, ignore it*)
+      else Set(hd1, (union tl1 set2));            (*Else, add it as head of new set with the rest*)
+
+fun intersect Empty Empty = Empty     (*If one of the sets is emtpy, intersection must be empty*)
+|   intersect Empty set = Empty
+|   intersect set Empty = Empty
+|   intersect (Set(hd1, tl1)) set2 =
+   if isMember hd1 set2 then  Set(hd1, (intersect tl1 set2))   (*If head of first set in in second set, we add it as new head*)
+   else intersect tl1 set2;                                    (*Else, we ignore it*)
+
 (* Simple function to stringify the contents of a Set of characters *)
 fun stringifyCharSet Empty = ""
   | stringifyCharSet (Set(y, ys)) = Char.toString(y) ^ " " ^ stringifyCharSet(ys);
@@ -35,11 +66,11 @@ fun print_chr x = print ("{ " ^ stringifyCharSet(x) ^ "}\n");
 list2Set [1, 3, 2];
 list2Set [#"a", #"b", #"c"];
 list2Set [];
-list2Set [6, 2, 2];
+list2Set [6, 2, 2, 4, 5, 2, 8];
 list2Set ["x", "y", "z", "x"];
 
 (* Question 1 *)
-f [3, 1, 4, 1, 5, 9]
+f [3, 1, 4, 1, 5, 9];
 
 (* Question 5 *)
 val quest5 = isMember "one" (list2Set ["1", "2", "3", "4"]);
