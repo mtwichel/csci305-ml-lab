@@ -14,11 +14,13 @@ fun f [] = [] (* returns an empty list if passed an empty list; it is the base c
 
 datatype 'element set = Empty | Set of ('element * 'element set);
 
+(*returns true if element e is in set, false if it is not*)
 fun isMember e Empty = false
 |   isMember e (Set(head,tail)) =
       head=e
       orelse isMember e tail;
 
+(*returns a set from a given list (if list contains duplicate, only one of that item willl be added)*)
 fun list2Set [] = Empty
 |   list2Set (x::xs) =
       let
@@ -28,6 +30,7 @@ fun list2Set [] = Empty
         else Set(x, current)
       end;
 
+(*returns mathematical union of two sets*)
 fun union Empty Empty = Empty  (*If two Empty sets, return empty*)
 |   union Empty set = set      (*If one Empty set,*)
 |   union set Empty = set      (*return the full set*)
@@ -35,6 +38,7 @@ fun union Empty Empty = Empty  (*If two Empty sets, return empty*)
       if isMember hd1 set2 then union tl1 set2    (*If head of first set in in second set, ignore it*)
       else Set(hd1, (union tl1 set2));            (*Else, add it as head of new set with the rest*)
 
+(*returns mathematical intersection of two sets*)
 fun intersect Empty Empty = Empty     (*If one of the sets is emtpy, intersection must be empty*)
 |   intersect Empty set = Empty
 |   intersect set Empty = Empty
